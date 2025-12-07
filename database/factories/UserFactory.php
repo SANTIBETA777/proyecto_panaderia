@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User; // 👈 Importamos el modelo para enlazar la factory
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -11,6 +12,11 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends Factory
 {
+    /**
+     * Enlazamos la factory al modelo User
+     */
+    protected $model = User::class;
+
     /**
      * The current password being used by the factory.
      */
@@ -24,7 +30,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->name(), // ✅ Usamos $this->faker
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
