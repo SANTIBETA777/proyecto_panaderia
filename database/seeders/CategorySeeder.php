@@ -9,22 +9,28 @@ class CategorySeeder extends Seeder
 {
     public function run(): void
     {
-        Category::create([
-            'name' => 'Pan fresco',
-            'slug' => 'pan-fresco',
-            'description' => 'Panes recién horneados cada mañana',
-        ]);
+        Category::firstOrCreate(
+            ['slug' => 'pan-fresco'], // 👈 clave única
+            [
+                'name' => 'Pan fresco',
+                'description' => 'Panes recién horneados cada mañana',
+            ]
+        );
 
-        Category::create([
-            'name' => 'Pastelería',
-            'slug' => 'pasteleria',
-            'description' => 'Tortas, postres y dulces artesanales',
-        ]);
+        Category::firstOrCreate(
+            ['slug' => 'pasteles'],
+            [
+                'name' => 'Pasteles',
+                'description' => 'Deliciosos pasteles artesanales',
+            ]
+        );
 
-        Category::create([
-            'name' => 'Bebidas',
-            'slug' => 'bebidas',
-            'description' => 'Café, chocolate y jugos naturales',
-        ]);
+        Category::firstOrCreate(
+            ['slug' => 'galletas'],
+            [
+                'name' => 'Galletas',
+                'description' => 'Crujientes galletas caseras',
+            ]
+        );
     }
 }
