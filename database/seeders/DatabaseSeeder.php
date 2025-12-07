@@ -1,6 +1,8 @@
 <?php
 
 namespace Database\Seeders;
+require_once __DIR__ . '/AdminUserSeeder.php';
+
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
