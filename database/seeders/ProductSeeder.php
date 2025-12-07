@@ -9,31 +9,37 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-        Product::create([
-            'category_id' => 1,
-            'name' => 'Pan francés',
-            'slug' => 'pan-frances',
-            'description' => 'Crujiente por fuera, suave por dentro',
-            'price' => 1200,
-            'is_active' => true,
-        ]);
+        Product::firstOrCreate(
+            ['slug' => 'pan-frances'], // 👈 clave única
+            [
+                'category_id' => 1,
+                'name' => 'Pan francés',
+                'description' => 'Crujiente por fuera, suave por dentro',
+                'price' => 1200,
+                'is_active' => true,
+            ]
+        );
 
-        Product::create([
-            'category_id' => 1,
-            'name' => 'Croissant',
-            'slug' => 'croissant',
-            'description' => 'Hojaldre mantequilloso y dorado',
-            'price' => 3500,
-            'is_active' => true,
-        ]);
+        Product::firstOrCreate(
+            ['slug' => 'croissant'],
+            [
+                'category_id' => 1,
+                'name' => 'Croissant',
+                'description' => 'Deliciosa masa hojaldrada con mantequilla',
+                'price' => 2500,
+                'is_active' => true,
+            ]
+        );
 
-        Product::create([
-            'category_id' => 2,
-            'name' => 'Torta de chocolate',
-            'slug' => 'torta-chocolate',
-            'description' => 'Bizcocho húmedo con cobertura de cacao',
-            'price' => 15000,
-            'is_active' => true,
-        ]);
+        Product::firstOrCreate(
+            ['slug' => 'galleta-chocolate'],
+            [
+                'category_id' => 3,
+                'name' => 'Galleta de chocolate',
+                'description' => 'Galleta casera con trozos de chocolate',
+                'price' => 1500,
+                'is_active' => true,
+            ]
+        );
     }
 }
